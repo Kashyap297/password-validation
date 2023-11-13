@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If Else Condition</title>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="assets/css/all.min.css" class="rel">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" class="re4l">
+
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/style.css" class="rel">
+</head>
+
+<body>
+    <div class="col-3">
+        <div class="card p-4 shadow">
+            <h5 class="fw-bold">Change Password</h5>
+            <label for="" class="my-2">Old Password</label>
+            <input type="text" placeholder="Old Password" id="oldpass">
+            <label for="" class="my-2">New Password</label>
+            <input type="text" placeholder="New Password" id="newpass">
+            <label for="" class="my-2">Confirm Password</label>
+            <input type="text" placeholder="Confirm Password" id="confpass">
+            <div class="text-center mt-3">
+                <p id="fail"></p>
+                <p id="success"></p>
+                <button class="shadow" onclick="submit()">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    function submit() {
+        var passwd = 1234
+        var oldPass = document.getElementById('oldpass').value
+        var newPass = document.getElementById('newpass').value
+        var confPass = document.getElementById('confpass').value
+        if (oldPass != '') {
+            if (oldPass == passwd) {
+                // document.getElementById('fail').innerHTML = "Enter New Password"
+                if (newPass != '' && confPass != '') {
+                    if (newPass != oldPass) {
+                        if (newPass == confPass) {
+                            document.getElementById('success').innerHTML = "Password Changed Successfully.."
+                            oldPass = newPass
+                            document.getElementById('fail').innerHTML = ""
+                        } else {
+                            document.getElementById('fail').innerHTML = "Password did't Matched"
+                            document.getElementById('success').innerHTML = ""
+                        }
+                    } else {
+                        document.getElementById('fail').innerHTML = "Same As Old Password"
+                    }
+                } else {
+                    document.getElementById('fail').innerHTML = "Enter New & Confirm Password"
+                }
+            } else {
+                document.getElementById('fail').innerHTML = "Invalid Old Password"
+            }
+        } else {
+            document.getElementById('fail').innerHTML = "Enter Old Password"
+        }
+    }
+</script>
+
+</html>
